@@ -4,6 +4,7 @@ from User import User
 class UserDao:
     _SELECT = "SELECT * FROM users"
     _DELETE = "DELETE FROM users WHERE id_user = %s"
+    _UPDATE = "UPDATE users set user_name = %s, password = %s WHERE id_user = %s"
 
     @classmethod
     def selectAll(cls):
@@ -22,4 +23,10 @@ class UserDao:
             id = (id_user, )
             cursor.execute(cls._DELETE, id)
 
-UserDao.selectAll()
+    @classmethod
+    def updateUser(cls, user):
+        with Cursor() as cursor:
+            userData = (user.userName, user.password, user.userId)
+            cursor.execute(cls._UPDATE, userData)
+
+
