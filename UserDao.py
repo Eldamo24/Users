@@ -36,7 +36,4 @@ class UserDao:
             userData = (user.userId, user.userName, user.password)
             cursor.execute(cls._INSERT, userData)
 
-user = User(3, "Chatrancito", "24101994zoe")
-UserDao.insertUser(user)
-UserDao.selectAll()
 
